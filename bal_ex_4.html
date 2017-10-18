@@ -1,0 +1,44 @@
+<idoctype html>
+<head>
+	<title>풍선띄우기 4단계 - 풍선을 랜덤한 위치에 넣자!!</title>
+	<style>
+		.balloon{
+			width:50px; height:400px; /*풍선이 다 나오도록 높이값 변경*/
+			background:url('balloon_1.gif');
+			background-size:100% auto;
+			background-repeat:no-repeat;
+			animation: bMove 8s linear;
+			/*애니메이션이름 bMove 8초동안 가속도없이 일정한 속도로*/
+		}
+
+		@keyframes bMove{
+			0%{ background-position: 0 300px; opacity:0;}
+			20%{opacity:1;}
+			80%{ opacity:1; }
+			100%{ background-position:0 0;opacity:0;}
+			/*백그라운드의 위치가 처음에는 300px만큼 밑에 생겼다가 위로 올라오도록*/
+		}
+	</style>
+</head>
+<body>
+	<script>
+	var t = document.createElement("div");
+	t.setAttribute("class","balloon"); 
+
+	t.style.position = "absolute"; //1. 우선 포지션을 absolute로
+	//2. window.innerHeight와 window.innerWidth로 전체 화면 높이,폭을 알 수 있다.
+	console.log(window.innerHeight, window.innerWidth);
+	//3. 랜덤함수를 사용해서 화면폭과 높이값보다 작게(화면에 들어오게) 좌표지정
+	t.style.top = randomBH(0,window.innerHeight) + "px";
+	t.style.left = randomBH(0,window.innerWidth) + "px";
+
+	document.body.appendChild(t); //body에 이 풍선을 붙여라!!
+	
+	//최소값과 최대값 사이의 임의의 숫자를 리턴하는 함수
+	function randomBH(min, max) {
+  		min = Math.ceil(min);
+  		max = Math.floor(max);
+  		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+	</script>
+</body>

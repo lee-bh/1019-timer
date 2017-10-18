@@ -1,0 +1,25 @@
+<idoctype html>
+<head>
+	<title>풍선띄우기 2단계 - 풍선을 움직여보자</title>
+	<style>
+		.balloon{
+			width:50px; height:400px; /*풍선이 다 나오도록 높이값 변경*/
+			background:url('balloon_1.gif');
+			background-size:100% auto;
+			background-repeat:no-repeat;
+			animation: bMove 8s linear;
+			/*애니메이션이름 bMove 8초동안 가속도없이 일정한 속도로*/
+		}
+
+		@keyframes bMove{
+			0%{ background-position: 0 300px; opacity:0;}
+			20%{opacity:1;}
+			80%{ opacity:1; }
+			100%{ background-position:0 0;opacity:0;}
+			/*백그라운드의 위치가 처음에는 300px만큼 밑에 생겼다가 위로 올라오도록*/
+		}
+	</style>
+</head>
+<body>
+	<div class="balloon"></div>
+</body>
